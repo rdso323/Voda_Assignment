@@ -1,22 +1,16 @@
 import React, { Component } from 'react'
-import {shallow} from 'enzyme'
-import Photos from './photos';
+import {shallow,mount} from 'enzyme'
+import Photos from './Photos';
+import { BrowserRouter as Router} from "react-router-dom";
 
-import {findByTestAtrr} from '../utils';
 
-const setUp = (props={}) => {
-    const component = shallow(<Photos {...props }/>);
-    return component;
-}
-
-describe("Have props", () => {
-    let wrapper
-    beforeEach(() => {
-        wrapper=setUp();
+describe("Sample props passed to component", () => {
+    let wrapper = mount(
+      <Router>
+        <Photos match={{params:{topic:1}}} />
+      </Router>
+    );
+    test("Check if props passed and used successfully by the function", () => {
+        expect(wrapper.length).toBe(1);
     });
-
-    it("Should render the props",() =>{
-        const component = findByTestAtrr(wrapper,"loaded_photo");
-        expect(component.length).toBe(1); 
-    })
-})
+  });

@@ -1,8 +1,8 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Albums from "./components/album";
-import Search from "./components/search";
-import Photos from "./components/photos";
+import Albums from "./components/Albums";
+import Search from "./components/Search";
+import Photos from "./components/Photos";
 import React, {Component} from 'react';
 
 

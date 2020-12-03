@@ -1,6 +1,6 @@
 import React from 'react'
 
-function search (props) {
+function Search (props) {
     return (
         <div>
             <input data-test="search_button" type= "submit" name = "submit" value="Search" onClick={props.handleSubmit}/>
@@ -8,4 +8,4 @@ function search (props) {
     )
 }
 
-export default search
+export default Search

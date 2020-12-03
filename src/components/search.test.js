@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {shallow} from 'enzyme'
-import Search from './search';
+import Search from './Search';
 
 import {findByTestAtrr} from '../utils';
 

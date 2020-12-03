@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {shallow,mount} from 'enzyme'
-import Albums from './album';
+import Albums from './Albums';
 import albumsMock from './albumsMock.json'
 import usersMock from './usersMock.json'
 import { BrowserRouter as Router} from "react-router-dom";

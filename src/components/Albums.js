@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-function album(props) {
+function Albums(props) {
     var onclick = false;
     if (
       props.data_albums != null &&
@@ -37,4 +37,4 @@ function album(props) {
     }
 }
 
-export default album
+export default Albums
