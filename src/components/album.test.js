@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import {shallow,mount} from 'enzyme'
 import Albums from './Albums';
 import albumsMock from './albumsMock.json'

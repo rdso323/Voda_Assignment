@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import {shallow,mount} from 'enzyme'
+import React from 'react'
+import {mount} from 'enzyme'
 import Photos from './Photos';
 import { BrowserRouter as Router} from "react-router-dom";
 
