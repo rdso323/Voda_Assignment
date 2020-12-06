@@ -44,19 +44,23 @@ describe("Click the album, check the behaviour of the page", () => {
   const MockDenied = () => <div className="denied"> Denied</div>;
 
   const wrapper = mount(
-    <MemoryRouter initialEntries={["/"]}>
-      <div>
-        <Albums data_albums={albumsMock[0]} data_users={usersMock[0]} isLoaded={true} />
-        <Switch>
-          <Route exact path="/" component={MockDenied} />
-          <Route exact path="/photo/:id" component={MockComp} />
-        </Switch>
-      </div>
-    </MemoryRouter>
+
+    <Router>    
+      <Switch>
+        <React.Fragment>
+          <Route exact path="/"> 
+            <Albums data_albums={albumsMock} data_users={usersMock} isLoaded={true} />
+            <MockDenied />
+          </Route>
+          <Route path="/pics/:topic" component={MockComp} />
+        </React.Fragment>
+      </Switch>
+    </Router>
   );
+
   test("Click the album, it should redirect to photo page", () => {
-    wrapper.find(".Title").simulate("click");
-    expect(wrapper.find(".target")).toHaveLength(1);
-    //expect(wrapper.find('.Title').length).toBe(!0);
+    expect(wrapper.find(".denied")).toHaveLength(1);
+    wrapper.find(".albumTitle").first().simulate("click", { button: 0 });
+    expect(wrapper.find(".target")).toHaveLength(1);    
   });
 });
