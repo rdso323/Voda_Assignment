@@ -9,11 +9,11 @@ function Photos(props) {
         props.match.params.topic +
         "/photos"
     )
-      .then(function (response) {
+      .then((response) => {
         console.log(response);
         return response.json();
       })
-      .then(function (myJson) {
+      .then((myJson) => {
         console.log(myJson);
         setPhotos(myJson);
       });
