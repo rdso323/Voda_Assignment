@@ -3,7 +3,7 @@ import { shallow, mount } from "enzyme";
 import Albums from "./Albums";
 import albumsMock from "./albumsMock.json";
 import usersMock from "./usersMock.json";
-import { BrowserRouter as Router, Route, MemoryRouter, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import { findByTestAtrr } from "../utils";
 
@@ -37,19 +37,21 @@ describe("Sample props passed to component", () => {
   });
 });
 
-
 // Click one of albums, the page should be redirected to the photo page
 describe("Click the album, check the behaviour of the page", () => {
   const MockComp = () => <div className="target">Target</div>;
   const MockDenied = () => <div className="denied"> Denied</div>;
 
   const wrapper = mount(
-
-    <Router>    
+    <Router>
       <Switch>
         <React.Fragment>
-          <Route exact path="/"> 
-            <Albums data_albums={albumsMock} data_users={usersMock} isLoaded={true} />
+          <Route exact path="/">
+            <Albums
+              data_albums={albumsMock}
+              data_users={usersMock}
+              isLoaded={true}
+            />
             <MockDenied />
           </Route>
           <Route path="/pics/:topic" component={MockComp} />
@@ -61,6 +63,6 @@ describe("Click the album, check the behaviour of the page", () => {
   test("Click the album, it should redirect to photo page", () => {
     expect(wrapper.find(".denied")).toHaveLength(1);
     wrapper.find(".albumTitle").first().simulate("click", { button: 0 });
-    expect(wrapper.find(".target")).toHaveLength(1);    
+    expect(wrapper.find(".target")).toHaveLength(1);
   });
 });

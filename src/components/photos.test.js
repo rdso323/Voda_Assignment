@@ -2,7 +2,8 @@ import React from "react";
 import { mount } from "enzyme";
 import Photos from "./Photos";
 import { BrowserRouter as Router } from "react-router-dom";
-import { act } from "@testing-library/react";
+import photosMock from "./photosMock.json";
+import PhotosDisplay from "./PhotosDisplay";
 
 describe("Sample props passed to component", () => {
   let wrapper = mount(
@@ -15,17 +16,29 @@ describe("Sample props passed to component", () => {
   });
 });
 
-describe("Sample props passed to component", () => {  
+describe("Sample props passed to component", () => {
   let wrapper = mount(
-    <Router>  
-      <Photos match={{ params: { topic: 1 } }} />
+    <Router>
+      <PhotosDisplay data_photos={photosMock} />
     </Router>
   );
 
-  test("Title name should be rendered correctly", () => {
-    setTimeout(() => {  console.log("World!"); }, 2000);
-    expect(wrapper.contains("Sorry, currently not working")).toEqual(
-      true
-    );
+  test("Titles should be rendered correctly", () => {
+    expect(
+      wrapper.contains("accusamus beatae ad facilis cum similique qui sunt")
+    ).toEqual(true);
+  });
+});
+
+describe("Sample props passed to component", () => {
+  let wrapper = mount(
+    <Router>
+      <PhotosDisplay data_photos={photosMock} />
+    </Router>
+  );
+
+  test("Photos should be clickable and should redirect you", () => {
+    wrapper.find(".photoLink").first().simulate("click", { button: 0 });
+    expect(wrapper.find("photoLink")).toHaveLength(0);
   });
 });
