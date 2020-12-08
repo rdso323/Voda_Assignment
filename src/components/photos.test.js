@@ -5,7 +5,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import photosMock from "./photosMock.json";
 import PhotosDisplay from "./PhotosDisplay";
 
-describe("Sample props passed to component", () => {
+describe("Prop for route passed in", () => {
   let wrapper = mount(
     <Router>
       <Photos match={{ params: { topic: 1 } }} />
@@ -16,7 +16,7 @@ describe("Sample props passed to component", () => {
   });
 });
 
-describe("Sample props passed to component", () => {
+describe("Mock data passed for state", () => {
   let wrapper = mount(
     <Router>
       <PhotosDisplay data_photos={photosMock} />
@@ -28,14 +28,7 @@ describe("Sample props passed to component", () => {
       wrapper.contains("accusamus beatae ad facilis cum similique qui sunt")
     ).toEqual(true);
   });
-});
 
-describe("Sample props passed to component", () => {
-  let wrapper = mount(
-    <Router>
-      <PhotosDisplay data_photos={photosMock} />
-    </Router>
-  );
 
   test("Photos should be clickable and should redirect you", () => {
     wrapper.find(".photoLink").first().simulate("click", { button: 0 });

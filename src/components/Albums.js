@@ -1,11 +1,11 @@
 import React from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Albums(props) {
-  if (props.data_albums != null && props.data_users != null && props.isLoaded) {
+  if (props.data_albums != null && props.data_users != null) {
     return props.data_albums.map((albums) => {
       return props.data_users.map((users) => {
-        if (users.id === albums.userId)
+        if (albums != null && users != null && users.id === albums.userId)
           return (
             <div
               key={albums.id}
@@ -28,10 +28,11 @@ function Albums(props) {
               <p>Id: {albums.id}</p>
             </div>
           );
+        return <div></div>;
       });
     });
   } else {
-    return <p>Click Search To Begin</p>;
+    return <h2>Loading...</h2>;
   }
 }
 

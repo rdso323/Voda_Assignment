@@ -9,7 +9,7 @@ import { findByTestAtrr } from "../utils";
 
 const setUp = (props = {}) => {
   const component = shallow(
-    <Albums data_albums={albumsMock} data_users={usersMock} isLoaded={true} />
+    <Albums data_albums={albumsMock} data_users={usersMock} />
   );
   return component;
 };
@@ -26,10 +26,10 @@ describe("Have props", () => {
   });
 });
 
-describe("Sample props passed to component", () => {
+describe("Mock data passed to component", () => {
   let wrapper = mount(
     <Router>
-      <Albums data_albums={albumsMock} data_users={usersMock} isLoaded={true} />
+      <Albums data_albums={albumsMock} data_users={usersMock} />
     </Router>
   );
   test("Check if a title appears correctly", () => {
@@ -47,11 +47,7 @@ describe("Click the album, check the behaviour of the page", () => {
       <Switch>
         <React.Fragment>
           <Route exact path="/">
-            <Albums
-              data_albums={albumsMock}
-              data_users={usersMock}
-              isLoaded={true}
-            />
+            <Albums data_albums={albumsMock} data_users={usersMock} />
             <MockDenied />
           </Route>
           <Route path="/pics/:topic" component={MockComp} />
